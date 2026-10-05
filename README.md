@@ -1,101 +1,92 @@
-# Sign Language Recognition
+# Signa – Real-Time Sign Language Recognition
 
-A deep learning-based Sign Language Recognition system that classifies **41 static sign-language classes** from images using **MobileNetV2 transfer learning**.
+Short project introduction
 
-## Project Overview
-
-The model is trained on **18,450 images** across 41 classes. Images are resized to **224 × 224 pixels** and augmented using rotation, zoom, translation, and contrast transformations.
-
-The project uses a two-stage training approach:
-
-1. **Transfer Learning** – MobileNetV2 with ImageNet pretrained weights is used as the feature extractor.
-2. **Fine-Tuning** – Later MobileNetV2 layers are selectively unfrozen and trained with a lower learning rate.
-
-The classification head consists of Global Average Pooling, Batch Normalization, a 256-unit Dense layer, Dropout, and a 41-class Softmax output.
-
-## Model Architecture
-
-Input Image (224 × 224 × 3)
-        ↓
-Data Augmentation
-        ↓
-MobileNetV2
-(ImageNet Weights)
-        ↓
-Global Average Pooling
-        ↓
-Batch Normalization
-        ↓
-Dense Layer (256, ReLU)
-        ↓
-Dropout (0.40)
-        ↓
-Dense Layer (41, Softmax)
-        ↓
-Predicted Sign
-
-## Sign Classes
-
-The model recognizes 41 classes including:
-
-- A–Z
-- 1–10
-- HELLO
-- I_LOVE_YOU
-- YES
-- NO
-- THANK_YOU
+## Overview
+Why you built Signa and the deep-learning exploration
 
 ## Features
-
-- 41-class sign-language classification
-- Image-based sign prediction
 - Real-time webcam recognition
-- Prediction confidence display
-- Top-5 predictions
-- Classification report
-- Confusion matrix
-- OpenCV-based webcam inference
-- MediaPipe Hand Landmarker for hand localization during deployment
+- 41 sign classes
+- Prediction confidence
+- Streamlit interface
+- Browser-based camera
 
-## Technologies Used
-
-- Python
-- TensorFlow / Keras
+## Deep Learning Approach
 - MobileNetV2
-- OpenCV
-- MediaPipe
-- Scikit-learn
-- NumPy
-- Matplotlib
-- Google Colab
+- Transfer Learning
+- Image-based recognition
+- Why you explored DL rather than primarily using a traditional ML/MediaPipe pipeline
 
-## Training
+## Supported Signs
+Numbers + alphabets + HELLO / YES / NO / THANK_YOU / I_LOVE_YOU
 
-The model uses data augmentation techniques including:
+## Dataset
+18,450 images
+41 classes
+450 images per class
 
-- Random rotation
-- Random zoom
-- Random translation
-- Random contrast
+## Model Architecture
+MobileNetV2 → Global Average Pooling → Dense → Dropout → Output
 
-Training also uses:
+## How Signa Works
 
-- Adam Optimizer
-- Early Stopping
-- Model Checkpointing
-- Reduce Learning Rate on Plateau
+Camera
+   ↓
+Frame
+   ↓
+Preprocessing
+   ↓
+Deep Learning Model
+   ↓
+Prediction
+   ↓
+Confidence
+   ↓
+Signa UI
 
-## Inference
+## Application Preview
+I screenshot
+C screenshot
+L screenshot
 
-The trained model supports both **single-image prediction** and **real-time webcam prediction**.
+## Technologies
+Python
+TensorFlow / Keras
+MobileNetV2
+OpenCV
+NumPy
+Streamlit
+WebRTC
 
-For webcam inference, OpenCV captures the video frames, converts them to RGB, resizes them to 224 × 224 pixels, and passes them to the trained model for classification.
+## Project Structure
+app.py
+requirements.txt
+models/
+notebook
+etc.
 
-The prediction is displayed along with its confidence score and FPS.
+## Run Locally
+conda environment / pip installation
+streamlit run app.py
 
+## Results
 
+## Challenges & Limitations
+Lighting
+Background
+Similar gestures
+Camera/domain shift
+Static-image recognition
 
-```text
-sign_language_final_41class.keras
-sign_language_classes_41.json
+## Future Improvements
+Hand localization
+Unknown/uncertain class
+Temporal gestures
+Performance optimization
+
+## Live Demo
+To be added after deployment
+
+## Author
+Francis Infant
